@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, user-scalable=yes">
+
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: black;
+            }
+
+            .vencimentos {
+                position: absolute;
+                top: 0;
+                left: 0;
+                visibility: visible;
+                opacity: 1;
+                transition: all .8s;
+                
+            }
+
+            .decla {
+                position: absolute;
+                top: 0;
+                left: 0;
+                visibility: hidden;
+                opacity: 0;
+                transition: all .8s;
+            }
+
+            .geral {
+                position: absolute;
+                top: 0;
+                left: 0;
+                visibility: hidden;
+                opacity: 0;
+                transition: all .8s;
+            }
+            
+            .portal {
+                position: absolute;
+                top: 0;
+                left: 0;
+                visibility: hidden;
+                opacity: 0;
+                transition: all .8s;
+            }
+
+            .banco {
+                position: absolute;
+                top: 0;
+                left: 0;
+                visibility: hidden;
+                opacity: 0;
+                transition: all .8s;
+                
+            }
+
+            .telas{
+                top: 0;
+                position: relative;
+                width: 100vw;
+                height: 100vh;
+            }
+
+            .heightClass{
+                height: 108vh;
+                width: 100vw;
+            }
+            
+        </style>
+
+    </head>
+    <body>
+        <div class="telas">
+            <div class="vencimentos" onclick="scrollwin()">
+                <iframe id="ven" class="heightClass" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNjE4Zjk1YWEtMDllYi00MjdhLTkyOTUtOTZjZDFhMDQxM2UyIiwidCI6IjdlNzExN2ZhLWNkOGQtNDFmYS04NDZhLTVhNDE5OGEwZTAyMiJ9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+            <div class="decla">
+                <iframe id="dec" class="heightClass" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiNzQwYmE1ODQtYzQ0OC00NGY0LWJlNjAtNTI2YzNkMDRkN2FlIiwidCI6IjdlNzExN2ZhLWNkOGQtNDFmYS04NDZhLTVhNDE5OGEwZTAyMiJ9" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+
+            <div class="geral">
+                <iframe id="ger" class="heightClass" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiMWY3YmFhMzctMjU2OC00YjAxLTk1ZmUtNDUyMGY3YzY3ZTczIiwidCI6IjdlNzExN2ZhLWNkOGQtNDFmYS04NDZhLTVhNDE5OGEwZTAyMiJ9&pageName=ReportSection" frameborder="0" allowFullScreen="true"></iframe>
+            </div>
+        </div>
+    </body>
+
+    <script>
+
+    const telaVencimentos = document.querySelector('.vencimentos');
+    const telaDeclaracoes = document.querySelector('.decla');
+    const telaGeral = document.querySelector('.geral');
+    const telaPortal = document.querySelector('.portal');
+    const telaBanco = document.querySelector('.banco');
+
+    document.body.addEventListener('onload', bodyZero);
+
+
+    function bodyZero() {
+        window.scrollTo(0, 0);
+    }
+
+    const init = () => {
+        bodyZero();
+        setTimeout(()=>{
+            declaracoes();
+        }, 10000)
+    }
+
+
+    const vencimentos = () => {
+        bodyZero();
+        telaGeral.style.opacity = 0;
+        telaGeral.style.visibility = 'hidden';
+
+        telaVencimentos.style.opacity = 1;
+        telaVencimentos.style.visibility = 'visible';
+
+        setTimeout(()=>{
+            declaracoes();
+        }, 30000)
+    }
+
+    const declaracoes = () => {
+
+        bodyZero();
+        telaVencimentos.style.opacity = 0;
+        telaVencimentos.style.visibility = 'hidden';
+
+        telaDeclaracoes.style.opacity = 1;
+        telaDeclaracoes.style.visibility = 'visible';
+
+        setTimeout(()=>{
+            geral();
+        }, 30000)
+    }
+
+    const geral = () => {
+        
+        bodyZero();
+        telaDeclaracoes.style.opacity = 0;
+        telaDeclaracoes.style.visibility = 'hidden';
+
+        telaGeral.style.opacity = 1;
+        telaGeral.style.visibility = 'visible';
+
+        setTimeout(()=>{
+            vencimentos();
+        }, 30000)
+    }
+
+    const portal = () => {
+
+        bodyZero();
+        telaGeral.style.opacity = 0;
+        telaGeral.style.visibility = 'hidden';
+
+        telaPortal.style.opacity = 1;
+        telaPortal.style.visibility = 'visible';
+
+        setTimeout(()=>{
+            vencimentos();
+        }, 30000)
+    }
+
+    init();
+
+    </script>
+
+    <script>
+    window.setInterval("reloadIFrame();", 300000);
+    function reloadIFrame() {
+        document.getElementById("dec").src="https://app.powerbi.com/view?r=eyJrIjoiNzQwYmE1ODQtYzQ0OC00NGY0LWJlNjAtNTI2YzNkMDRkN2FlIiwidCI6IjdlNzExN2ZhLWNkOGQtNDFmYS04NDZhLTVhNDE5OGEwZTAyMiJ9";
+        document.getElementById("ger").src="https://app.powerbi.com/view?r=eyJrIjoiMWY3YmFhMzctMjU2OC00YjAxLTk1ZmUtNDUyMGY3YzY3ZTczIiwidCI6IjdlNzExN2ZhLWNkOGQtNDFmYS04NDZhLTVhNDE5OGEwZTAyMiJ9&pageName=ReportSection";
+        document.getElementById("ven").src="https://app.powerbi.com/view?r=eyJrIjoiNjE4Zjk1YWEtMDllYi00MjdhLTkyOTUtOTZjZDFhMDQxM2UyIiwidCI6IjdlNzExN2ZhLWNkOGQtNDFmYS04NDZhLTVhNDE5OGEwZTAyMiJ9&pageName=ReportSection";
+    }
+    </script>
+
+</html>
